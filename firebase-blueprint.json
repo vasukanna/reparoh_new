@@ -1,0 +1,93 @@
+{
+  "entities": {
+    "users": {
+      "title": "User",
+      "description": "Information about customers, workers, and admins.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Firebase Auth UID" },
+        "displayName": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["customer", "worker", "admin"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "phoneNumber": { "type": "string" },
+        "location": { "type": "string" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "workers": {
+      "title": "Worker Profile",
+      "description": "Detailed profile for service providers.",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string", "description": "Matches user UID" },
+        "name": { "type": "string" },
+        "category": { "type": "string" },
+        "skills": { "type": "array", "items": { "type": "string" } },
+        "experience": { "type": "number", "description": "Years of experience" },
+        "pricing": { "type": "string", "description": "e.g., '500/day' or 'Starting from 200'" },
+        "location": { "type": "string" },
+        "district": { "type": "string" },
+        "phone": { "type": "string" },
+        "rating": { "type": "number" },
+        "reviewCount": { "type": "number" },
+        "isFeatured": { "type": "boolean" },
+        "isSubscribed": { "type": "boolean" },
+        "bio": { "type": "string" },
+        "status": { "type": "string", "enum": ["active", "suspended"] }
+      },
+      "required": ["uid", "name", "category", "location"]
+    },
+    "bookings": {
+      "title": "Booking",
+      "description": "Service booking records.",
+      "type": "object",
+      "properties": {
+        "customerId": { "type": "string" },
+        "workerId": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string", "format": "date" },
+        "time": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "accepted", "rejected", "completed", "cancelled"] },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "customerName": { "type": "string" },
+        "workerName": { "type": "string" },
+        "notes": { "type": "string" }
+      },
+      "required": ["customerId", "workerId", "date", "status"]
+    },
+    "reviews": {
+      "title": "Review",
+      "description": "Worker ratings and reviews.",
+      "type": "object",
+      "properties": {
+        "workerId": { "type": "string" },
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "rating": { "type": "number" },
+        "comment": { "type": "string" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["workerId", "customerId", "rating"]
+    },
+    "categories": {
+      "title": "Category",
+      "description": "Service categories.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "icon": { "type": "string" },
+        "slug": { "type": "string" }
+      },
+      "required": ["name", "slug"]
+    }
+  },
+  "firestore": {
+    "/users/{uid}": { "schema": "users", "description": "User profiles" },
+    "/workers/{uid}": { "schema": "workers", "description": "Worker profiles" },
+    "/bookings/{bookingId}": { "schema": "bookings", "description": "Service bookings" },
+    "/reviews/{reviewId}": { "schema": "reviews", "description": "Worker reviews" },
+    "/categories/{categoryId}": { "schema": "categories", "description": "Service categories" }
+  }
+}

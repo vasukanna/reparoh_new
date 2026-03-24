@@ -1,0 +1,43 @@
+export const AP_DISTRICTS = [
+  'Alluri Sitharama Raju',
+  'Anakapalli',
+  'Anantapur',
+  'Annamayya',
+  'Bapatla',
+  'Chittoor',
+  'East Godavari',
+  'Eluru',
+  'Guntur',
+  'Kakinada',
+  'Konaseema',
+  'Krishna',
+  'Kurnool',
+  'Nandyal',
+  'NTR',
+  'Palnadu',
+  'Parvathipuram Manyam',
+  'Prakasam',
+  'Sri Potti Sriramulu Nellore',
+  'Sri Sathya Sai',
+  'Srikakulam',
+  'Tirupati',
+  'Visakhapatnam',
+  'Vizianagaram',
+  'West Godavari',
+  'YSR Kadapa'
+];
+
+export const NELLORE_AREAS = [
+  'Nellore City',
+  'Kavali',
+  'Gudur',
+  'Venkatagiri',
+  'Atmakur',
+  'Sullurpeta',
+  'Naidupeta',
+  'Sangam',
+  'Buchireddypalem (Buchi)',
+  'Chennavarappadu',
+  'Kovur',
+  'Udayagiri'
+];
